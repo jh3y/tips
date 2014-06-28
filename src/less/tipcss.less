@@ -1,0 +1,98 @@
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+[data-tipcss] {
+  position: relative;
+}
+[data-tipcss]:hover:before,
+[data-tipcss].show:before {
+  content: attr(data-tipcss-content);
+  display: block;
+  position: absolute;
+  background: #555;
+  color: #FFF;
+  text-align: center;
+  border-radius: 5px;
+  padding: 4px;
+}
+[data-tipcss]:hover:after,
+[data-tipcss].show:after {
+  content: "";
+  position: absolute;
+  display: block;
+}
+[data-tipcss].top:before {
+  left: 50%;
+  bottom: 100%;
+  min-width: 150px;
+  margin-left: -75px;
+  margin-bottom: 10px;
+}
+[data-tipcss].top:after {
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: -12px;
+  margin-left: -12px;
+  border-top: 12px solid #555;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid transparent;
+}
+
+[data-tipcss].bottom:before {
+  left: 50%;
+  top: 100%;
+  min-width: 150px;
+  margin-left: -75px;
+  margin-top: 10px;
+}
+[data-tipcss].bottom:after {
+  top: 100%;
+  left: 50%;
+  margin-top: -12px;
+  margin-left: -12px;
+  border-top: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #555;
+  border-left: 12px solid transparent;
+}
+[data-tipcss].right:before {
+  top: 50%;
+  left: 100%;
+  width: 150px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: 10px;
+}
+[data-tipcss].right:after {
+  top: 50%;
+  left: 100%;
+  margin-top: -12px;
+  margin-left: -12px;
+  border-top: 12px solid transparent;
+  border-right: 12px solid #555;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid transparent;
+}
+[data-tipcss].left:before {
+  top: 50%;
+  right: 100%;
+  width: 150px;
+  height: 30px;
+  margin-top: -15px;
+  margin-right: 10px;
+}
+[data-tipcss].left:after {
+  top: 50%;
+  right: 100%;
+  margin-top: -12px;
+  margin-right: -12px;
+  border-top: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid #555;
+}
