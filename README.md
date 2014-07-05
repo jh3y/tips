@@ -26,6 +26,18 @@ Or with jQuery maybe
 
     $('#myTip').toggleClass('show');
 
+##how to use
+1. Simply add `data-tip` as an attribute to your element.
+2. Add its content with the `data-tip-content` attribute.
+3. Add helper classes to position and size your tip.
+
+##helper classes
+* `top`: position top
+* `right`: position right
+* `bottom`: position bottom
+* `left`: position left
+* `small`: small size
+* `large`: large size
 
 ##how does this work?
 `tips` is simply taking advantage of pseudo elements `:before` and `:after`.
@@ -36,5 +48,8 @@ Or with jQuery maybe
 ##contributing
 As always any suggestions etc. are welcome!
 Tweet me @ `_jh3y` or submit an issue!
+
+##license
+MIT
 
 __@jh3y__

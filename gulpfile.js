@@ -12,6 +12,7 @@ var gulp = require('gulp'),
   sources = {
     jade: 'src/jade/**/*.jade',
     less: 'src/less/**/*.less',
+    sass: 'src/sass/**/*.sass',
     license: 'src/text/**/*.txt'
   },
   env = 'out/',
@@ -29,6 +30,26 @@ gulp.task('serve', function(event) {
   });
   watch({glob: destinations.overwatch})
     .pipe(connect.reload());
+});
+gulp.task('sass:compile', function(event) {
+  return gulp.src([sources.license, sources.sass])
+    .pipe(concat('tips.sass'))
+    .pipe(sass())
+    .pipe(autoprefix([
+      'last 3 versions',
+      'Blackberry 10',
+      'Android 3',
+      'Android 4'
+    ]))
+    .pipe(gulp.dest(destinations.css))
+    .pipe(minify())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest(destinations.css));
+});
+gulp.task('sass:watch', function(event) {
+  watch({glob: sources.sass}, ['sass:compile']);
 });
 gulp.task('less:compile', function(event) {
   return gulp.src([sources.license, sources.less])
@@ -62,5 +83,5 @@ gulp.task('dist', ['less:compile'], function(event) {
   return gulp.src('out/css/**/*.css')
     .pipe(gulp.dest('dist/'));
 });
-gulp.task('dev', ['serve', 'less:watch', 'jade:watch']);
+gulp.task('dev', ['serve', 'sass:watch', 'jade:watch']);
 gulp.task('default', ['dev']);
