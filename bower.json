@@ -1,16 +1,15 @@
 {
-  "name": "tipcss",
+  "name": "tips",
   "version": "0.0.1",
-  "homepage": "https://github.com/jh3y/tip-cs-s",
+  "homepage": "https://github.com/jh3y/tips",
   "authors": [
     "jh3y <jhey.tompkins@gmail.com>"
   ],
-  "description": "Pure CSS tooltips with minimal effort!",
-  "main": "tipcss.css",
+  "description": "CSS tooltips with minimal effort!",
+  "main": "dist/tips.css",
   "keywords": [
     "css",
     "tooltips",
-    "tipcss",
     "tips"
   ],
   "license": "MIT"

@@ -1,22 +1,22 @@
 doctype
 head
-  title dev: tip(cs)s
-  link(href="css/tipcss.css", rel="stylesheet")
+  title dev: tips
+  link(href="css/tips.css", rel="stylesheet")
   style.
     body {
       text-align: center;
     }
 body
   header
-    h1 tip(cs)s
+    h1 tips
   .content
     div
-      a.top(data-tipcss, data-tipcss-content="Top!") top
+      a.top(data-tip, data-tip-content="Top!") top
     div
-      a.right(data-tipcss, data-tipcss-content="Right!") right
+      a.right.large(data-tip, data-tip-content="Right!") right
     div
-      a.bottom(data-tipcss, data-tipcss-content="Bottom!") bottom
+      a.small.bottom(data-tip, data-tip-content="Bottom!") bottom
     div
-      a.left(data-tipcss, data-tipcss-content="Left!") left
+      a.left(data-tip, data-tip-content="Left!") left
   footer
-    p tip(cs)s &copy; 2014
+    p tips &copy; 2014

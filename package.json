@@ -1,27 +1,26 @@
 {
-  "name": "tipcss",
+  "name": "tips",
   "version": "0.0.1",
-  "description": "Pure CSS tooltips with minimal effort!",
-  "main": "tipcss.css",
+  "description": "CSS tooltips with minimal effort!",
+  "main": "tips.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jh3y/tip-cs-s"
+    "url": "https://github.com/jh3y/tips"
   },
   "keywords": [
     "css",
     "tooltips",
-    "tipcss",
     "tips"
   ],
   "author": "jh3y <jhey.tompkins@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jh3y/tip-cs-s/issues"
+    "url": "https://github.com/jh3y/tips/issues"
   },
-  "homepage": "https://github.com/jh3y/tip-cs-s",
+  "homepage": "https://github.com/jh3y/tips",
   "devDependencies": {
     "gulp-autoprefixer": "0.0.7",
     "gulp-watch": "^0.6.8",
@@ -32,6 +31,7 @@
     "gulp-sass": "^0.7.2",
     "gulp-plumber": "^0.6.3",
     "gulp-connect": "^2.0.5",
-    "gulp-rename": "^1.2.0"
+    "gulp-rename": "^1.2.0",
+    "gulp-concat": "^2.2.0"
   }
 }
