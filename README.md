@@ -48,15 +48,17 @@ Or with jQuery maybe
 I use `gulp` as my task runner and therefore there are gulp tasks already written for getting up and running with a static livereload server that will watch your source files and compile them when necessary. The default task will do this and watch `less` files.
 
 To get up and running with development (assuming you have npm and gulp cli installed).
-1. Clone the repo
 
+1.Clone the repo
 
-      git clone https://github.com/jh3y/tips.git
-2. Install dependencies
+    git clone https://github.com/jh3y/tips.git
 
+2.Install dependencies
 
-      npm install
-3. Start hacking away!
+    npm install
+
+3.Start hacking away!
+
 ##contributing
 As always any suggestions etc. are welcome!
 Tweet me @ `_jh3y` or submit an issue!
