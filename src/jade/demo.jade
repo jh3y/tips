@@ -1,0 +1,46 @@
+doctype
+head
+  title tips | jh3y
+  link(href='http://fonts.googleapis.com/css?family=Droid+Serif', rel='stylesheet')
+  link(rel="stylesheet", href="css/tips.min.css")
+  style.
+    body {
+      font-family: 'Droid Serif', serif;
+    }
+    .center {
+      text-align: center;
+    }
+    code {
+      color: #E74C3C;
+    }
+    .container {
+      padding: 30px;
+    }
+    ol {
+      display: inline-block;
+    }
+    [data-tip] {
+      display: inline-block;
+      color: #8E44AD;
+      margin: 10px;
+    }
+body
+  h1.center tips
+  h3.center pure CSS tooltips because tooltips should be simple
+  .container.center
+    span(data-tip, data-tip-content="I'm a tooltip!").top.show I've got a tooltip
+    .center
+      span(data-tip, data-tip-content="I'm another tooltip").bottom Hover over me or tap me!
+  p.center tips work on <code>:hover</code> and can be positioned using helper classes and tweaked using less/sass sources.
+  p.center Due to the way <code>:hover</code> behaves on mobile devices, this means that they will appear on tap.
+  p.center Alternatively, you can show/hide tips by toggling the class <code>show</code>
+  .center
+    ol
+      li Include the stylesheet
+      li Add the attribute <code>data-tip</code> to an element that you wish to have a tooltip
+      li Use the attribute <code>data-tip-content</code> to declare the tooltip. content
+      li Lastly add any helper classes for positioning or sizing.
+  div.center.container
+    iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=watch&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="90px", height="20")
+    iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=fork&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="90px", height="20")
+    iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=follow&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="120px", height="20")

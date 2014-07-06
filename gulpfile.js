@@ -5,9 +5,11 @@ var gulp = require('gulp'),
   less = require('gulp-less'),
   sass = require('gulp-sass'),
   jade = require('gulp-jade'),
+  filter = require('gulp-filter'),
   autoprefix = require('gulp-autoprefixer'),
   minify = require('gulp-minify-css'),
   rename = require('gulp-rename'),
+  deploy = require('gulp-gh-pages'),
   concat = require('gulp-concat'),
   sources = {
     jade: 'src/jade/**/*.jade',
@@ -82,6 +84,18 @@ gulp.task('jade:watch', function(event) {
 gulp.task('dist', ['less:compile'], function(event) {
   return gulp.src('out/css/**/*.css')
     .pipe(gulp.dest('dist/'));
+});
+gulp.task('deploy:page', ['less:compile', 'jade:compile'], function(event) {
+  var htmlFilter = filter('**/*.html');
+  return gulp.src([
+      'out/**/*.*',
+      '!out/css/tips.css',
+      '!out/index.html'
+    ])
+    .pipe(htmlFilter)
+    .pipe(rename('index.html'))
+    .pipe(htmlFilter.restore())
+    .pipe(deploy());
 });
 gulp.task('dev', ['serve', 'sass:watch', 'jade:watch']);
 gulp.task('default', ['dev']);
