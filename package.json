@@ -1,6 +1,6 @@
 {
   "name": "tips",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "CSS tooltips with minimal effort!",
   "main": "tips.css",
   "scripts": {
