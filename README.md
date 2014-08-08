@@ -2,7 +2,7 @@ tips
 ===
 CSS tooltips with minimal effort!
 
-![alt tag](https://raw.github.com/jh3y/screenshots/master/tips/tips.gif)
+![alt tag](https://raw.github.com/jh3y/pics/master/tips/tips.gif)
 
 ##example
 
