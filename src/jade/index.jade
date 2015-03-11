@@ -1,3 +1,7 @@
+mixin tooltip(placement, size, content)
+  div
+    a.show(data-tip, data-tip-content=content, class="#{placement} #{size}")= placement
+
 doctype
 head
   title dev: tips
@@ -6,17 +10,31 @@ head
     body {
       text-align: center;
     }
+    div {
+      margin: 60px auto;
+    }
 body
   header
     h1 tips
   .content
-    div
-      a.top(data-tip, data-tip-content="Top!") top
-    div
-      a.right.large(data-tip, data-tip-content="Right!") right
-    div
-      a.small.bottom(data-tip, data-tip-content="Bottom!") bottom
-    div
-      a.left(data-tip, data-tip-content="Left!") left
+    +tooltip('top', '', 'Top!')
+    +tooltip('top small', 'small', 'Top Small!')
+    +tooltip('top large', 'large', 'Top Large!')
+    +tooltip('top left', '', 'Top Left!')
+    +tooltip('top right', '', 'Top Right!')
+    +tooltip('top left', 'large', 'Top Left Large!')
+    +tooltip('top right', 'large', 'Top Right Large!')
+    +tooltip('top left', 'small', 'Top Left Small!')
+    +tooltip('top right', 'small', 'Top Right Small!')
+    
+    +tooltip('bottom', '', 'Bottom!')
+    +tooltip('bottom small', 'small', 'Bottom Small!')
+    +tooltip('bottom large', 'large', 'Bottom Large!')
+    +tooltip('bottom left', '', 'Bottom Left!')
+    +tooltip('bottom right', '', 'Bottom Right!')
+    +tooltip('bottom left', 'large', 'Bottom Left Large!')
+    +tooltip('bottom right', 'large', 'Bottom Right Large!')
+    +tooltip('bottom left', 'small', 'Bottom Left Small!')
+    +tooltip('bottom right', 'small', 'Bottom Right Small!')
   footer
     p tips &copy; 2015
