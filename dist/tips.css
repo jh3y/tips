@@ -10,50 +10,73 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-[data-tip],
+[data-tip] {
+  position: relative;
+}
 [data-tip]:before,
 [data-tip]:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
 }
-[data-tip] {
-  position: relative;
-}
-[data-tip]:hover:before,
-[data-tip].show:before {
+[data-tip]:before {
   font-size: 16px;
   content: attr(data-tip-content);
-  display: block;
-  position: absolute;
   background: #555555;
   color: #ffffff;
   text-align: center;
   border-radius: 5px 5px 5px 5px;
   padding: 5px 5px 5px 5px;
-  z-index: 1;
 }
-[data-tip]:hover:after,
-[data-tip].show:after {
+[data-tip]:after {
   content: "";
-  position: absolute;
-  display: block;
-  z-index: 1;
 }
 [data-tip]:hover:before,
 [data-tip].show:before,
 [data-tip]:hover:after,
 [data-tip].show:after {
-  -webkit-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
-  -webkit-animation: fadeIn 0.5s;
-  animation: fadeIn 0.5s;
+  visibility: visible;
+  opacity: 1;
+}
+[data-tip].top.top:before,
+[data-tip].bottom.top:before {
+  bottom: 100%;
+  margin-bottom: 12px;
+}
+[data-tip].top.top:after,
+[data-tip].bottom.top:after {
+  bottom: 100%;
+  margin-bottom: -12px;
+  border-top: 12px solid #555555;
+}
+[data-tip].top.bottom:before,
+[data-tip].bottom.bottom:before {
+  top: 100%;
+  margin-top: 12px;
+}
+[data-tip].top.bottom:after,
+[data-tip].bottom.bottom:after {
+  top: 100%;
+  margin-top: -12px;
+  border-bottom: 12px solid #555555;
 }
 [data-tip].top:before,
 [data-tip].bottom:before {
   left: 50%;
   width: 150px;
   margin-left: -75px;
+}
+[data-tip].top:after,
+[data-tip].bottom:after {
+  left: 50%;
+  margin-left: -12px;
+  border: 12px solid transparent;
 }
 [data-tip].top.small:before,
 [data-tip].bottom.small:before {
@@ -65,86 +88,50 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   width: 300px;
   margin-left: -150px;
 }
-[data-tip].top:before {
-  bottom: 100%;
-  margin-bottom: 12px;
-}
-[data-tip].bottom:before {
-  top: 100%;
-  margin-top: 12px;
-}
-[data-tip].top:after,
-[data-tip].bottom:after {
-  left: 50%;
-  margin-left: -12px;
-  border: 12px solid transparent;
-}
-[data-tip].top:after {
-  bottom: 100%;
-  margin-bottom: -12px;
-  border-top: 12px solid #555555;
-}
-[data-tip].bottom:after {
-  top: 100%;
-  margin-top: -12px;
-  border-bottom: 12px solid #555555;
-}
-[data-tip].right:before,
-[data-tip].left:before {
+[data-tip].left:before,
+[data-tip].right:before {
   top: 50%;
   width: 150px;
   height: 40px;
   margin-top: -20px;
 }
-[data-tip].right.small:before,
-[data-tip].left.small:before {
-  width: 75px;
-  height: 20px;
-  margin-top: -10px;
-}
-[data-tip].right.large:before,
-[data-tip].left.large:before {
-  width: 300px;
-  height: 100px;
-  margin-top: -50px;
-}
-[data-tip].right:before {
-  left: 100%;
-  margin-left: 12px;
-}
-[data-tip].left:before {
-  right: 100%;
-  margin-right: 12px;
-}
-[data-tip].right:after,
-[data-tip].left:after {
+[data-tip].left:after,
+[data-tip].right:after {
   top: 50%;
   margin-top: -12px;
   border: 12px solid transparent;
 }
-[data-tip].right:after {
+[data-tip].left.right:before,
+[data-tip].right.right:before {
+  left: 100%;
+  margin-left: 12px;
+}
+[data-tip].left.right:after,
+[data-tip].right.right:after {
   left: 100%;
   margin-left: -12px;
   border-right: 12px solid #555555;
 }
-[data-tip].left:after {
+[data-tip].left.left:before,
+[data-tip].right.left:before {
+  right: 100%;
+  margin-right: 12px;
+}
+[data-tip].left.left:after,
+[data-tip].right.left:after {
   right: 100%;
   margin-right: -12px;
   border-left: 12px solid #555555;
 }
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+[data-tip].left.small:before,
+[data-tip].right.small:before {
+  width: 75px;
+  height: 20px;
+  margin-top: -10px;
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+[data-tip].left.large:before,
+[data-tip].right.large:before {
+  width: 300px;
+  height: 100px;
+  margin-top: -50px;
 }

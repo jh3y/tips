@@ -4,49 +4,6 @@
 @padding: 5px 5px 5px 5px;
 @animDuration: .5s;
 @fontSize: 16px;
-
-// Foundation for tips
-[data-tip],
-[data-tip]:before,
-[data-tip]:after {
-  box-sizing: border-box;
-}
-[data-tip] {
-  position: relative;
-}
-// The 'before' pseudo element is concerned with the body.
-// of tips
-[data-tip]:hover:before,
-[data-tip].show:before {
-  font-size: @fontSize;
-  content: attr(data-tip-content);
-  display: block;
-  position: absolute;
-  background: @bgColor;
-  color: @txtColor;
-  text-align: center;
-  border-radius: @borderRadius;
-  padding: @padding;
-  z-index: 1;
-}
-// The 'after' pseudo element is concerned with the arrow.
-[data-tip]:hover:after,
-[data-tip].show:after {
-  content: "";
-  position: absolute;
-  display: block;
-  z-index: 1;
-}
-// A fade in animation is set on the tips here.
-[data-tip]:hover:before,
-[data-tip].show:before,
-[data-tip]:hover:after,
-[data-tip].show:after {
-  transition: all @animDuration ease 0s;
-  animation: fadeIn @animDuration;
-}
-// Define the different position tooltips. Sizing is important as
-// sometimes dynamically depending on content, tweaking is necessary.
 @smWidth: 75px;
 @smHeight: 20px;
 @width: 150px;
@@ -54,94 +11,133 @@
 @lgWidth: 300px;
 @lgHeight: 100px;
 @arrowLength: 12px;
-// Top and bottom positioned tips need only a defined width as their
-// content will automatically resize the tip.
-[data-tip].top:before,
-[data-tip].bottom:before {
-  left: 50%;
-  width: @width;
-  margin-left: -(@width / 2);
-}
-[data-tip].top.small:before,
-[data-tip].bottom.small:before {
-  width: @smWidth;
-  margin-left: -(@smWidth / 2);
-}
-[data-tip].top.large:before,
-[data-tip].bottom.large:before {
-  width: @lgWidth;
-  margin-left: -(@lgWidth / 2);
-}
-[data-tip].top:before {
-  bottom: 100%;
-  margin-bottom: @arrowLength;
-}
-[data-tip].bottom:before {
-  top: 100%;
-  margin-top: @arrowLength;
-}
-[data-tip].top:after,
-[data-tip].bottom:after {
-  left: 50%;
-  margin-left: -(@arrowLength);
-  border: @arrowLength solid transparent;
-}
-[data-tip].top:after {
-  bottom: 100%;
-  margin-bottom: -(@arrowLength);
-  border-top: @arrowLength solid @bgColor;
-}
-[data-tip].bottom:after {
-  top: 100%;
-  margin-top: -(@arrowLength);
-  border-bottom: @arrowLength solid @bgColor;
-}
-// Left and right positioned tips need a height definition too. Else
-// arrow positioning can be thrown off.
-[data-tip].right:before,
-[data-tip].left:before {
-  top: 50%;
-  width: @width;
-  height: @height;
-  margin-top: -(@height / 2);
-}
-[data-tip].right.small:before,
-[data-tip].left.small:before {
-  width: @smWidth;
-  height: @smHeight;
-  margin-top: -(@smHeight / 2)
-}
-[data-tip].right.large:before,
-[data-tip].left.large:before {
-  width: @lgWidth;
-  height: @lgHeight;
-  margin-top: -(@lgHeight / 2)
-}
-[data-tip].right:before {
-  left: 100%;
-  margin-left: @arrowLength;
-}
-[data-tip].left:before {
-  right: 100%;
-  margin-right: @arrowLength;
-}
-[data-tip].right:after,
-[data-tip].left:after {
-  top: 50%;
-  margin-top: -(@arrowLength);
-  border: @arrowLength solid transparent;
-}
-[data-tip].right:after {
-  left: 100%;
-  margin-left: -(@arrowLength);
-  border-right: @arrowLength solid @bgColor;
-}
-[data-tip].left:after {
-  right: 100%;
-  margin-right: -(@arrowLength);
-  border-left: @arrowLength solid @bgColor;
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+
+[data-tip] {
+  position: relative;
+  &:before,
+  &:after {
+    box-sizing: border-box;
+    transition: all @animDuration ease 0s;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+  }
+  &:before {
+    font-size: @fontSize;
+    content: attr(data-tip-content);
+    background: @bgColor;
+    color: @txtColor;
+    text-align: center;
+    border-radius: @borderRadius;
+    padding: @padding;
+  }
+  &:after {
+    content: "";
+  }
+  &:hover,
+  &.show {
+    &:before,
+    &:after {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  &.top,
+  &.bottom {
+    &.top {
+      &:before {
+        bottom: 100%;
+        margin-bottom: @arrowLength;
+      }
+      &:after {
+        bottom: 100%;
+        margin-bottom: -(@arrowLength);
+        border-top: @arrowLength solid @bgColor;
+      }
+    }
+    &.bottom {
+      &:before {
+        top: 100%;
+        margin-top: @arrowLength;
+      }
+      &:after {
+        top: 100%;
+        margin-top: -(@arrowLength);
+        border-bottom: @arrowLength solid @bgColor;
+      }
+    }
+    &:before {
+      left: 50%;
+      width: @width;
+      margin-left: -(@width / 2);
+    }
+    &:after {
+      left: 50%;
+      margin-left: -(@arrowLength);
+      border: @arrowLength solid transparent;
+    }
+    &.small {
+      &:before {
+        width: @smWidth;
+        margin-left: -(@smWidth / 2);
+      }
+    }
+    &.large {
+      &:before {
+        width: @lgWidth;
+        margin-left: -(@lgWidth / 2);
+      }
+    }
+  }
+  &.left,
+  &.right {
+    &:before {
+      top: 50%;
+      width: @width;
+      height: @height;
+      margin-top: -(@height / 2);
+    }
+    &:after {
+      top: 50%;
+      margin-top: -(@arrowLength);
+      border: @arrowLength solid transparent;
+    }
+    &.right {
+      &:before {
+        left: 100%;
+        margin-left: @arrowLength;
+      }
+      &:after {
+        left: 100%;
+        margin-left: -(@arrowLength);
+        border-right: @arrowLength solid @bgColor;
+      }
+    }
+    &.left {
+      &:before {
+        right: 100%;
+        margin-right: @arrowLength;
+      }
+      &:after {
+        right: 100%;
+        margin-right: -(@arrowLength);
+        border-left: @arrowLength solid @bgColor;
+      }
+    }
+    &.small {
+      &:before {
+        width: @smWidth;
+        height: @smHeight;
+        margin-top: -(@smHeight / 2);
+      }
+    }
+    &.large {
+      &:before {
+        width: @lgWidth;
+        height: @lgHeight;
+        margin-top: -(@lgHeight / 2);
+      }
+    }
+  }
 }
