@@ -4,17 +4,50 @@
 .center {
   text-align: center;
 }
-code {
+code,
+a {
   color: #E74C3C;
+  text-decoration: none;
 }
 .container {
   padding: 30px;
 }
 ol {
   display: inline-block;
+  padding: 0;
+  text-align: left;
 }
-[data-tip] {
-  display: inline-block;
-  color: #8E44AD;
-  margin: 10px;
-}</style></head><body><h1 class="center">tips</h1><h3 class="center">pure CSS tooltips because tooltips should be simple</h3><div class="container center"><span data-tip data-tip-content="I'm a tooltip!" class="top show">I've got a tooltip</span><div class="center"><span data-tip data-tip-content="I'm another tooltip" class="bottom">Hover over me or tap me!</span></div></div><p class="center">tips work on <code>:hover</code> and can be positioned using helper classes and tweaked using less/sass sources.</p><p class="center">Due to the way <code>:hover</code> behaves on mobile devices, this means that they will appear on tap.</p><p class="center">Alternatively, you can show/hide tips by toggling the class <code>show</code></p><div class="center"><ol><li>Include the stylesheet</li><li>Add the attribute <code>data-tip</code> to an element that you wish to have a tooltip</li><li>Use the attribute <code>data-tip-content</code> to declare the tooltip. content</li><li>Lastly add any helper classes for positioning or sizing.</li></ol></div><div class="center container"><iframe src="http://ghbtns.com/github-btn.html?user=jh3y&amp;repo=tips&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=jh3y&amp;repo=tips&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=jh3y&amp;repo=tips&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120px" height="20"></iframe></div></body>
+h1 {
+  margin: 100px auto;
+}
+#desktop {
+  display: none;
+}
+#mobile {
+  display: block;
+}
+#content {
+  font-size: .75rem;
+  opacity: 0;
+  transition: opacity: 75s ease 0s;
+  -webkit-transition: opacity .75s ease 0s;
+}
+@media(min-width: 768px) {
+  ol {
+    text-align: center;
+  }
+  #desktop {
+    display: block;
+  }
+  #mobile {
+    display: none;
+  }
+}</style></head><body><h1 id="desktop" data-tip data-tip-content="Pure CSS tooltips because tooltips should be simple" class="tip--top center">Hover me!</h1><h1 id="mobile" data-tip data-tip-content="Pure CSS tooltips because tooltips should be simple" class="tip--top center">Tap me!</h1><div id="content"><h2 class="center">Tips!</h2><p class="center">Tips is a pure CSS solution for tooltips because tooltips should be simple</p><div class="center"><ol><li>Include the stylesheet</li><li>Add the attribute <code>data-tip</code> to your element</li><li>Use the attribute <code>data-tip-content</code> to declare tip content</li><li>Add any helper classes for positioning and/or sizing</li></ol></div><p class="center">Check out the <a href="https://github.com/jh3y/tips" target="_blank">docs</a>!</p><div class="center container"><iframe src="http://ghbtns.com/github-btn.html?user=jh3y&amp;repo=tips&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=jh3y&amp;repo=tips&amp;type=fork&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=jh3y&amp;repo=tips&amp;type=follow&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120px" height="20"></iframe></div></div><script>var tt = document.getElementById('desktop'),
+  ttm = document.getElementById('mobile'),
+  content = document.getElementById('content');
+tt.addEventListener('mouseenter', function(event) {
+  content.setAttribute('style', 'opacity: 1;');
+});
+ttm.addEventListener('click', function(event) {
+  content.setAttribute('style', 'opacity: 1;');
+});</script></body>
