@@ -11,37 +11,69 @@ head
     .center {
       text-align: center;
     }
-    code {
+    code,
+    a {
       color: #E74C3C;
+      text-decoration: none;
     }
     .container {
       padding: 30px;
     }
     ol {
       display: inline-block;
+      padding: 0;
+      text-align: left;
     }
-    [data-tip] {
-      display: inline-block;
-      color: #8E44AD;
-      margin: 10px;
+    h1 {
+      margin: 100px auto;
+    }
+    #desktop {
+      display: none;
+    }
+    #mobile {
+      display: block;
+    }
+    #content {
+      font-size: .75rem;
+      opacity: 0;
+      transition: opacity: 75s ease 0s;
+      -webkit-transition: opacity .75s ease 0s;
+    }
+    @media(min-width: 768px) {
+      ol {
+        text-align: center;
+      }
+      #desktop {
+        display: block;
+      }
+      #mobile {
+        display: none;
+      }
     }
 body
-  h1.center tips
-  h3.center pure CSS tooltips because tooltips should be simple
-  .container.center
-    span(data-tip, data-tip-content="I'm a tooltip!").top.show I've got a tooltip
+  h1#desktop.tip--top.center(data-tip, data-tip-content="Pure CSS tooltips because tooltips should be simple") Hover me!
+  h1#mobile.tip--top.center(data-tip, data-tip-content="Pure CSS tooltips because tooltips should be simple") Tap me!
+  #content
+    h2.center Tips!
+    p.center Tips is a pure CSS solution for tooltips because tooltips should be simple
     .center
-      span(data-tip, data-tip-content="I'm another tooltip").bottom Hover over me or tap me!
-  p.center tips work on <code>:hover</code> and can be positioned using helper classes and tweaked using less/sass sources.
-  p.center Due to the way <code>:hover</code> behaves on mobile devices, this means that they will appear on tap.
-  p.center Alternatively, you can show/hide tips by toggling the class <code>show</code>
-  .center
-    ol
-      li Include the stylesheet
-      li Add the attribute <code>data-tip</code> to an element that you wish to have a tooltip
-      li Use the attribute <code>data-tip-content</code> to declare the tooltip. content
-      li Lastly add any helper classes for positioning or sizing.
-  div.center.container
-    iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=watch&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="90px", height="20")
-    iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=fork&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="90px", height="20")
-    iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=follow&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="120px", height="20")
+      ol
+        li Include the stylesheet
+        li Add the attribute <code>data-tip</code> to your element
+        li Use the attribute <code>data-tip-content</code> to declare tip content
+        li Add any helper classes for positioning and/or sizing
+    p.center Check out the <a href="https://github.com/jh3y/tips" target="_blank">docs</a>!
+    div.center.container
+      iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=watch&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="90px", height="20")
+      iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=fork&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="90px", height="20")
+      iframe(src = "http://ghbtns.com/github-btn.html?user=jh3y&repo=tips&type=follow&count=true", allowtransparency="true", frameborder="0", scrolling="0", width="120px", height="20")
+  script.
+    var tt = document.getElementById('desktop'),
+      ttm = document.getElementById('mobile'),
+      content = document.getElementById('content');
+    tt.addEventListener('mouseenter', function(event) {
+      content.setAttribute('style', 'opacity: 1;');
+    });
+    ttm.addEventListener('click', function(event) {
+      content.setAttribute('style', 'opacity: 1;');
+    });

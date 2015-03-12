@@ -1,19 +1,27 @@
-// The key to the border system is TRBL where 0 is where you are heading.
-// The same goes for color because you are just filling in the opposite of where you are heading
+.remify(@var, @px) {
+  @val: @px / (@px * 0 + 1);
+  @rem: (@val / 16) * 1rem;
+  @{var}: @rem;
+}
+
+.border-width(@top, @right, @bottom, @left) {
+  border-width: (((@top / (@top * 0 + 1)) / 16) * 1rem) (((@right / (@right * 0 + 1)) / 16) * 1rem) (((@bottom / (@bottom * 0 + 1)) / 16) * 1rem) (((@left / (@left * 0 + 1)) / 16) * 1rem);
+}
+
+@pkg: tip;
 @bgColor: #555;
 @txtColor: #FFF;
-@borderRadius: 5px 5px 5px 5px;
-@padding: 5px 5px 5px 5px;
-@padding: 5px;
+@borderRadius: 5px;
+@padding: 10px;
 @animDuration: .5s;
 @fontSize: 14px;
-@smWidth: 75px;
 @width: 150px;
-@height: 40px;
+@smWidth: 75px;
 @lgWidth: 300px;
-@arrowLength: 12px;
-@pointerWidth: 10px;
-@pointerLength: 20px;
+@pointerWidth: 5px;
+@pointerLength: 10px;
+@tipMargin: 5px;
+
 
 [data-tip] {
   position: relative;
@@ -26,112 +34,120 @@
     visibility: hidden;
     z-index: 1;
     left: 50%;
+    transform: translateY((((@tipMargin / (@tipMargin * 0 + 1)) / 16) * 1rem));
   }
   &:before {
-    font-size: @fontSize;
+    .remify(font-size, @fontSize);
     content: attr(data-tip-content);
     background: @bgColor;
     color: @txtColor;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    border-radius: @borderRadius;
-    padding: @padding;
+    .remify(border-radius, @borderRadius);
+    .remify(padding, @padding);
   }
   &:after {
     content: "";
     border-style: solid;
     border-color: transparent;
-    margin-left: -(@pointerWidth);
+    .remify(margin-left, -(@pointerWidth));
   }
   &:hover,
-  &.show {
+  &.@{pkg}--visible {
+    &.@{pkg}--bottom {
+      &:before,
+      &:after {
+        transform: translateY((((@tipMargin / (@tipMargin * 0 + 1)) / 16) * 1rem));
+      }
+    }
     &:before,
     &:after {
       visibility: visible;
       opacity: 1;
+      transform: translateY((((-@tipMargin / (-@tipMargin * 0 + 1)) / 16) * 1rem));
     }
   }
-  &.top,
-  &.bottom {
-    &.top {
-      &:before {
-        bottom: 100%;
-        margin-bottom: @pointerLength;
-      }
-      &:after {
-        border-width: @pointerLength @pointerWidth 0 @pointerWidth;
-        bottom: 100%;
-        border-top-color: @bgColor;
-      }
-    }
-    &.bottom {
-      &:before {
-        top: 100%;
-        margin-top: @pointerLength;
-      }
-      &:after {
-        top: 100%;
-        border-width: 0 @pointerWidth @pointerLength @pointerWidth;
-        border-bottom-color: @bgColor;
-      }
-      &.right {
-        &:after {
-          border-width: 0 @pointerWidth @pointerLength 0;
-        }
-      }
-      &.left {
-        &:after {
-          border-width: 0 0 @pointerLength @pointerWidth;
-        }
-      }
-    }
+  &.@{pkg}--top {
     &:before {
-      width: @width;
-      margin-left: -(@width / 2);
+      bottom: 100%;
+      .remify(margin-bottom, @pointerLength);
     }
-    &.small {
-      &:before {
-        width: @smWidth;
-        margin-left: -(@smWidth / 2);
-      }
+    &:after {
+      .border-width(@pointerLength, @pointerWidth, 0, @pointerWidth);
+      bottom: 100%;
+      border-top-color: @bgColor;
     }
-    &.large {
-      &:before {
-        width: @lgWidth;
-        margin-left: -(@lgWidth / 2);
-      }
+  }
+  &.@{pkg}--bottom {
+    &:before {
+      .remify(margin-top, @pointerLength);
     }
-    &.right {
-      &:before {
-        left: 100%;
-        margin-left: -(@pointerWidth + @padding);
-      }
+    &:after {
+      .border-width(0, @pointerWidth, @pointerLength, @pointerWidth);
+      border-bottom-color: @bgColor;
+    }
+    &:before,
+    &:after {
+      top: 100%;
+      transform: translateY((((-@tipMargin / (-@tipMargin * 0 + 1)) / 16) * 1rem));
+    }
+    &.@{pkg}--right {
       &:after {
-        left: 100%;
-        margin-left: -@pointerWidth;
-        border-width: @pointerLength @pointerWidth 0 0;
+        .border-width(0, @pointerWidth, @pointerLength, 0);
       }
     }
-    &.left {
-      &:before {
-        left: -@width;
-        margin-left: @pointerWidth + @padding;
-      }
+    &.@{pkg}--left {
       &:after {
-        left: 0;
-        margin-left: 0;
-        border-width: @pointerLength 0 0 @pointerWidth;
+        .border-width(0, 0, @pointerLength, @pointerWidth);
       }
-      &.small {
-        &:before {
-          left: -@smWidth;
-        }
+    }
+  }
+  &:before {
+    .remify(width, @width);
+    .remify(margin-left, @width / -2);
+  }
+  &.@{pkg}--small {
+    &:before {
+      .remify(width, @smWidth);
+      .remify(margin-left, @smWidth / -2);
+    }
+  }
+  &.@{pkg}--large {
+    &:before {
+      .remify(width, @lgWidth);
+      .remify(margin-left, @lgWidth / -2);
+    }
+  }
+  &.@{pkg}--right {
+    &:before {
+      left: 100%;
+      .remify(margin-left, -(@pointerWidth + @padding));
+    }
+    &:after {
+      left: 100%;
+      .remify(margin-left, -(@pointerWidth));
+      .border-width(@pointerLength, @pointerWidth, 0, 0);
+    }
+  }
+  &.@{pkg}--left {
+    &:before {
+      .remify(left, -(@width));
+      .remify(margin-left, @pointerWidth + @padding);
+    }
+    &:after {
+      left: 0;
+      margin-left: 0;
+      .border-width(@pointerLength, 0, 0, @pointerWidth);
+    }
+    &.@{pkg}--small {
+      &:before {
+        .remify(left, -@smWidth);
       }
-      &.large {
-        &:before {
-          left: -@lgWidth;
-        }
+    }
+    &.@{pkg}--large {
+      &:before {
+        .remify(left, -@lgWidth);
       }
     }
   }

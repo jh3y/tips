@@ -2,7 +2,7 @@ var gulp = require('gulp'),
   plumber = require('gulp-plumber'),
   connect = require('gulp-connect'),
   less = require('gulp-less'),
-  sass = require('gulp-sass'),
+  scss = require('gulp-sass'),
   jade = require('gulp-jade'),
   filter = require('gulp-filter'),
   autoprefix = require('gulp-autoprefixer'),
@@ -13,7 +13,7 @@ var gulp = require('gulp'),
   sources = {
     jade: 'src/jade/**/*.jade',
     less: 'src/less/**/*.less',
-    sass: 'src/sass/**/*.sass',
+    scss: 'src/scss/**/*.scss',
     license: 'src/text/**/*.txt'
   },
   env = 'out/',
@@ -36,10 +36,10 @@ gulp.task('serve', ['build'], function(event) {
 	// sets up a livereload that watches for any changes in the root
 	gulp.watch(destinations.overwatch, ['reload']);
 });
-gulp.task('sass:compile', function(event) {
-  return gulp.src([sources.license, sources.sass])
-    .pipe(concat('tips.sass'))
-    .pipe(sass())
+gulp.task('scss:compile', function(event) {
+  return gulp.src([sources.license, sources.scss])
+    .pipe(concat('tips.scss'))
+    .pipe(scss())
     .pipe(autoprefix([
       'last 3 versions',
       'Blackberry 10',
@@ -53,8 +53,8 @@ gulp.task('sass:compile', function(event) {
     }))
     .pipe(gulp.dest(destinations.css));
 });
-gulp.task('sass:watch', function(event) {
-  gulp.watch(sources.sass, ['sass:compile']);
+gulp.task('scss:watch', function(event) {
+  gulp.watch(sources.scss, ['scss:compile']);
 });
 gulp.task('less:compile', function(event) {
   return gulp.src([sources.license, sources.less])
@@ -100,6 +100,6 @@ gulp.task('deploy:page', ['less:compile', 'jade:compile'], function(event) {
     .pipe(htmlFilter.restore())
     .pipe(deploy());
 });
-gulp.task('build', ['sass:compile', 'jade:compile']);
-gulp.task('dev', ['serve', 'less:watch', 'jade:watch']);
+gulp.task('build', ['scss:compile', 'jade:compile']);
+gulp.task('dev', ['serve', 'scss:watch', 'jade:watch']);
 gulp.task('default', ['dev']);

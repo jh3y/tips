@@ -1,6 +1,6 @@
 mixin tooltip(placement, size, content)
   div
-    a.show(data-tip, data-tip-content=content, class="#{placement} #{size}")= placement
+    a(data-tip, data-tip-content=content, class="#{placement} tip--#{size}")= placement
 
 doctype
 head
@@ -11,30 +11,30 @@ head
       text-align: center;
     }
     div {
-      margin: 60px auto;
+      margin: 160px auto;
     }
 body
   header
     h1 tips
   .content
-    +tooltip('top', '', 'Top!')
-    +tooltip('top small', 'small', 'Top Small!')
-    +tooltip('top large', 'large', 'Top Large!')
-    +tooltip('top left', '', 'Top Left!')
-    +tooltip('top right', '', 'Top Right!')
-    +tooltip('top left', 'large', 'Top Left Large!')
-    +tooltip('top right', 'large', 'Top Right Large!')
-    +tooltip('top left', 'small', 'Top Left Small!')
-    +tooltip('top right', 'small', 'Top Right Small!')
+    +tooltip('tip--top', '', 'Top!')
+    +tooltip('tip--top', 'small', 'Top Small!')
+    +tooltip('tip--top', 'large', 'Top Large!')
+    +tooltip('tip--top tip--left', '', 'Top Left!')
+    +tooltip('tip--top tip--right', '', 'Top Right!')
+    +tooltip('tip--top tip--left', 'large', 'Top Left Large!')
+    +tooltip('tip--top tip--right', 'large', 'Top Right Large!')
+    +tooltip('tip--top tip--left', 'small', 'Top Left Small!')
+    +tooltip('tip--top tip--right', 'small', 'Top Right Small!')
     
-    +tooltip('bottom', '', 'Bottom!')
-    +tooltip('bottom small', 'small', 'Bottom Small!')
-    +tooltip('bottom large', 'large', 'Bottom Large!')
-    +tooltip('bottom left', '', 'Bottom Left!')
-    +tooltip('bottom right', '', 'Bottom Right!')
-    +tooltip('bottom left', 'large', 'Bottom Left Large!')
-    +tooltip('bottom right', 'large', 'Bottom Right Large!')
-    +tooltip('bottom left', 'small', 'Bottom Left Small!')
-    +tooltip('bottom right', 'small', 'Bottom Right Small!')
+    +tooltip('tip--bottom', '', 'Bottom!')
+    +tooltip('tip--bottom', 'small', 'Bottom Small!')
+    +tooltip('tip--bottom', 'large', 'Bottom Large!')
+    +tooltip('tip--bottom tip--left', '', 'Bottom Left!')
+    +tooltip('tip--bottom tip--right', '', 'Bottom Right!')
+    +tooltip('tip--bottom tip--left', 'large', 'Bottom Left Large!')
+    +tooltip('tip--bottom tip--right', 'large', 'Bottom Right Large!')
+    +tooltip('tip--bottom tip--left', 'small', 'Bottom Left Small!')
+    +tooltip('tip--bottom tip--right', 'small', 'Bottom Right Small!')
   footer
     p tips &copy; 2015

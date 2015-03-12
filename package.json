@@ -1,6 +1,6 @@
 {
   "name": "tips",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "CSS tooltips with minimal effort!",
   "main": "tips.css",
   "scripts": {
@@ -15,7 +15,7 @@
     "tooltips",
     "tips"
   ],
-  "author": "jh3y <jhey.tompkins@gmail.com>",
+  "author": "jh3y <jh3y@live.co.uk>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jh3y/tips/issues"

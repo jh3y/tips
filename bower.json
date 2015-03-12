@@ -1,9 +1,9 @@
 {
   "name": "tips",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "homepage": "https://github.com/jh3y/tips",
   "authors": [
-    "jh3y <jhey.tompkins@gmail.com>"
+    "jh3y <jh3y@live.co.uk>"
   ],
   "description": "CSS tooltips with minimal effort!",
   "main": "dist/tips.css",
