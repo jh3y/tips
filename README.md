@@ -1,8 +1,7 @@
-tips
-===
-CSS tooltips with minimal effort!
 
 ![alt tag](https://raw.github.com/jh3y/pics/master/tips/tips.png)
+
+CSS tooltips with minimal effort!
 
 ##Example
 
