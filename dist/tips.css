@@ -2,7 +2,7 @@
 tips - http://jh3y.github.io/tips
 Licensed under the MIT license
 
-jh3y (c) 2014.
+jh3y (c) 2015.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -25,103 +25,107 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   visibility: hidden;
   z-index: 1;
   left: 50%;
+  -webkit-transform: translateY(0.3125rem);
+  -ms-transform: translateY(0.3125rem);
+  transform: translateY(0.3125rem);
 }
 [data-tip]:before {
-  font-size: 14px;
+  font-size: 0.875rem;
   content: attr(data-tip-content);
   background: #555555;
   color: #ffffff;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  border-radius: 5px 5px 5px 5px;
-  padding: 5px;
+  border-radius: 0.3125rem;
+  padding: 0.625rem;
 }
 [data-tip]:after {
   content: "";
   border-style: solid;
   border-color: transparent;
-  margin-left: -10px;
+  margin-left: -0.3125rem;
+}
+[data-tip]:hover.tip--bottom:before,
+[data-tip].tip--visible.tip--bottom:before,
+[data-tip]:hover.tip--bottom:after,
+[data-tip].tip--visible.tip--bottom:after {
+  -webkit-transform: translateY(0.3125rem);
+  -ms-transform: translateY(0.3125rem);
+  transform: translateY(0.3125rem);
 }
 [data-tip]:hover:before,
-[data-tip].show:before,
+[data-tip].tip--visible:before,
 [data-tip]:hover:after,
-[data-tip].show:after {
+[data-tip].tip--visible:after {
   visibility: visible;
   opacity: 1;
+  -webkit-transform: translateY(-0.3125rem);
+  -ms-transform: translateY(-0.3125rem);
+  transform: translateY(-0.3125rem);
 }
-[data-tip].top.top:before,
-[data-tip].bottom.top:before {
+[data-tip].tip--top:before {
   bottom: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 0.625rem;
 }
-[data-tip].top.top:after,
-[data-tip].bottom.top:after {
-  border-width: 20px 10px 0 10px;
+[data-tip].tip--top:after {
+  border-width: 0.625rem 0.3125rem 0rem 0.3125rem;
   bottom: 100%;
   border-top-color: #555555;
 }
-[data-tip].top.bottom:before,
-[data-tip].bottom.bottom:before {
-  top: 100%;
-  margin-top: 20px;
+[data-tip].tip--bottom:before {
+  margin-top: 0.625rem;
 }
-[data-tip].top.bottom:after,
-[data-tip].bottom.bottom:after {
-  top: 100%;
-  border-width: 0 10px 20px 10px;
+[data-tip].tip--bottom:after {
+  border-width: 0rem 0.3125rem 0.625rem 0.3125rem;
   border-bottom-color: #555555;
 }
-[data-tip].top.bottom.right:after,
-[data-tip].bottom.bottom.right:after {
-  border-width: 0 10px 20px 0;
+[data-tip].tip--bottom:before,
+[data-tip].tip--bottom:after {
+  top: 100%;
+  -webkit-transform: translateY(-0.3125rem);
+  -ms-transform: translateY(-0.3125rem);
+  transform: translateY(-0.3125rem);
 }
-[data-tip].top.bottom.left:after,
-[data-tip].bottom.bottom.left:after {
-  border-width: 0 0 20px 10px;
+[data-tip].tip--bottom.tip--right:after {
+  border-width: 0rem 0.3125rem 0.625rem 0rem;
 }
-[data-tip].top:before,
-[data-tip].bottom:before {
-  width: 150px;
-  margin-left: -75px;
+[data-tip].tip--bottom.tip--left:after {
+  border-width: 0rem 0rem 0.625rem 0.3125rem;
 }
-[data-tip].top.small:before,
-[data-tip].bottom.small:before {
-  width: 75px;
-  margin-left: -37.5px;
+[data-tip]:before {
+  width: 9.375rem;
+  margin-left: -4.6875rem;
 }
-[data-tip].top.large:before,
-[data-tip].bottom.large:before {
-  width: 300px;
-  margin-left: -150px;
+[data-tip].tip--small:before {
+  width: 4.6875rem;
+  margin-left: -2.34375rem;
 }
-[data-tip].top.right:before,
-[data-tip].bottom.right:before {
+[data-tip].tip--large:before {
+  width: 18.75rem;
+  margin-left: -9.375rem;
+}
+[data-tip].tip--right:before {
   left: 100%;
-  margin-left: -15px;
+  margin-left: -0.9375rem;
 }
-[data-tip].top.right:after,
-[data-tip].bottom.right:after {
+[data-tip].tip--right:after {
   left: 100%;
-  margin-left: -10px;
-  border-width: 20px 10px 0 0;
+  margin-left: -0.3125rem;
+  border-width: 0.625rem 0.3125rem 0rem 0rem;
 }
-[data-tip].top.left:before,
-[data-tip].bottom.left:before {
-  left: -150px;
-  margin-left: 15px;
+[data-tip].tip--left:before {
+  left: -9.375rem;
+  margin-left: 0.9375rem;
 }
-[data-tip].top.left:after,
-[data-tip].bottom.left:after {
+[data-tip].tip--left:after {
   left: 0;
   margin-left: 0;
-  border-width: 20px 0 0 10px;
+  border-width: 0.625rem 0rem 0rem 0.3125rem;
 }
-[data-tip].top.left.small:before,
-[data-tip].bottom.left.small:before {
-  left: -75px;
+[data-tip].tip--left.tip--small:before {
+  left: -4.6875rem;
 }
-[data-tip].top.left.large:before,
-[data-tip].bottom.left.large:before {
-  left: -300px;
+[data-tip].tip--left.tip--large:before {
+  left: -18.75rem;
 }
