@@ -1,0 +1,114 @@
+rem(size)
+  val = size / (size * 0 + 1)
+  ((val) / 16)rem
+
+
+$pkg = 'tip'
+$bgColor = #555
+$txtColor = #FFF
+$borderRadius = rem(5px)
+$padding = rem(10px)
+$animDuration = .25s
+$fontSize = rem(14px)
+$width = rem(150px)
+$smWidth = rem(75px)
+$lgWidth = rem(300px)
+$pointerWidth = rem(5px)
+$pointerLength = rem(10px)
+$tipMargin = rem(5px)
+
+[data-{$pkg}]
+  position relative
+  &:before
+  &:after
+    box-sizing border-box
+    transition all $animDuration ease 0s
+    position absolute
+    opacity 0
+    visibility hidden
+    z-index 1
+    left 50%
+    transform translateY($tipMargin)
+  &:before
+    font-size $fontSize
+    content attr(data- + $pkg + -content)
+    background $bgColor
+    color $txtColor
+    display table-cell
+    vertical-align middle
+    text-align center
+    border-radius $borderRadius
+    padding $padding
+  &:after
+    content ""
+    border-style solid
+    border-color transparent
+    margin-left -($pointerWidth)
+  &:hover
+  &.{$pkg}--visible
+    &.{$pkg}--bottom
+      &:before
+      &:after
+        transform translateY($tipMargin)
+    &:before
+    &:after
+      visibility visible
+      opacity 1
+      transform translateY(-($tipMargin))
+  &.{$pkg}--top
+    &:before
+      margin-bottom $pointerLength
+      bottom: 100%
+    &:after
+      border-width $pointerLength $pointerWidth 0 $pointerWidth
+      border-top-color $bgColor
+      bottom 100%
+  &.{$pkg}--bottom
+    &:before
+      margin-top $pointerLength
+    &:after
+      border-width 0 $pointerWidth $pointerLength $pointerWidth
+      border-bottom-color: $bgColor
+    &:before
+    &:after
+      top 100%
+      transform translateY(-($tipMargin))
+    &.{$pkg}--right
+      &:after
+        border-width 0 $pointerWidth $pointerLength 0
+    &.{$pkg}--left
+      &:after
+        border-width 0 0 $pointerLength $pointerWidth
+  &:before
+    width $width
+    margin-left ($width / -2)
+  &.{$pkg}--small
+    &:before
+      width $smWidth
+      margin-left ($smWidth / -2)
+  &.{$pkg}--large
+    &:before
+      width $lgWidth
+      margin-left ($lgWidth / -2)
+  &.{$pkg}--right
+    &:before
+      left 100%
+      margin-left -($pointerWidth + $padding)
+    &:after
+      left: 100%
+      margin-left -($pointerWidth)
+      border-width $pointerLength $pointerWidth 0 0
+  &.{$pkg}--left
+    &:before
+      left -($width)
+      margin-left $pointerWidth + $padding
+    &:after
+      left 0
+      margin-left 0
+      border-width $pointerLength 0 0 $pointerWidth
+    &.{$pkg}--small
+      &:before
+        left -($smWidth)
+    &.{$pkg}--large
+      &:before
+        left -($lgWidth)

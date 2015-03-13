@@ -45,9 +45,9 @@ Or with jQuery maybe
 ##How do I change the colors? sizes? etc.
 `tips` is available in both `less` and `scss` versions and has various variables for things like color and size that can be changed. There are two sizing helper classes included for `small` and `large` tips.
 
-All sizing is also recalculated into `rem`. This means that if you change the base font size for your document, tips and their contents will scale accordingly. If you wish to not use `rem`, the mixin/function for less/scss respectively can be altered for this or if needed I can publish a pixel version.
+All sizing is also recalculated into `rem`. This means that if you change the base font size for your document, tips and their contents will scale accordingly. If you wish to not use `rem`, the mixin/function for less/scss/styl can be altered for this or if needed I can publish a pixel version.
 
-I use `gulp` as my task runner and therefore there are gulp tasks already written for getting up and running with a static livereload server that will watch your source files and compile them when necessary. The default task will do this and watch `scss` files.
+I use `gulp` as my task runner and therefore there are gulp tasks already written for getting up and running with a static livereload server that will watch your source files and compile them when necessary. The default task will do this and watch `styl` files.
 
 To get up and running with development (assuming you have npm and gulp cli installed).
 
